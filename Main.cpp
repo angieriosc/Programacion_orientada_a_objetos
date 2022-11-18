@@ -15,10 +15,14 @@
 
 //Bibliotecas
 #include <iostream>   //para imprimir.
+#include "Menu.h"
+#include "Alimento.h"
 #include "Comida.h" //donde estan los objetos de mi proyecto.
 #include "Bebida.h"
 #include "Postre.h"
 #include "Inventario.h"
+#include "Ingrediente.h"
+
 
 using namespace std;
 
