@@ -15,13 +15,10 @@
 
 //Bibliotecas
 #include <iostream>   //para imprimir.
+#include "Alimento.h"//donde estan los objetos de mi proyecto.
 #include "Menu.h"
-#include "Alimento.h"
-#include "Comida.h" //donde estan los objetos de mi proyecto.
-#include "Bebida.h"
-#include "Postre.h"
 #include "Inventario.h"
-#include "Ingrediente.h"
+#include <string> 
 
 
 using namespace std;
@@ -31,44 +28,122 @@ void menu(){
 
     //Imprime las opciones que va a tener el sistema
     cout << "Elija una opción:\n";
-    cout << "1. Mostrar menú.\n";
+    cout << "1. Mostrar menú \n";
     cout << "2. Mostrar Inventario \n";
-    cout << "3. Mostrar ventas. \n";
-    cout << "4. Calcular total de cuenta. \n";
-    cout << "5. Calcular total de ventas";
-    cout << "9. Agregar cuenta \n";
-    cout << "10. Quitar cuenta \n";
-    cout << "11. Agregar inventario \n";
-    cout << "12. Salir \n";
+    cout << "3. Agregar alimento a la cuenta \n";
+    cout << "4. Calcular total de cuenta \n";
+    cout << "5. Editar costo de algun producto \n";
+    cout << "6. Agregar nuevo producto al inventario \n";
+    cout << "7. Crear ejemplos inventario \n";
+    cout << "8. Salir \n";
+}
+
+int validar_opcion(int opcion){
+  while (1>opcion||opcion>8){
+    cout << "Ingresa respuesta valida: ";
+    cin >> opcion;
+  }
+  return opcion; 
+}
+  
+int validar_opcion_6(int opcion_6){
+  while (1>opcion_6||opcion_6>3){
+    cout << "Ingresa respuesta valida: ";
+    cin >> opcion_6;
+  }
+  return opcion_6;  
+  
 }
 
 int main(){
-  
-  Comida huevos("Huevos con jamon", 2, "Jamon, 2 Huevos",55.0);
-  Comida hotcakes("Hotcakes", 2, "3 hotcakes",65.0);
-  Comida chilaquiles("Chilaquiles con huevo", 1, "Totopos, 2 Huevos",75.0);
-  Comida sandwich("Sandwich", 2, "Jamon, Queso, 2 Pan",65.0);
-  Comida sincronizada("Sincronizada", 2, "Jamon, Queso, 2 Tortillas",55.0);
-  Bebida cafe("Café", 2, "Jamon, 2 Huevos",55.0);
-  Bebida jugo("Jugo de Naranja", 1, "Jamon, 2 Huevos",55.0);
-  Bebida leche("Leche", 1, "Jamon, 2 Huevos",55.0);
-  Bebida refresco("Refrescos", 1, "Jamon, 2 Huevos",55.0);
-  Postre pay("Pay de limón", 1, "Jamon, 2 Huevos",55.0);
-  Postre flan("Flan", 1, "Jamon, 2 Huevos",55.0);
-  Postre galletas("Galletas", 1, "Jamon, 2 Huevos",55.0);
-  Inventario ing_huevos("Huevos", 18)
-  Inventario ing_jamon("Jamon", 15)
-  Inventario ing_queso("Queso", 500)
-  Inventario ing_hotcakes("Hotcakes", 6)
-  Inventario ing_tortilla("Tortilla", 10)
-  Inventario ing_totopos("Huevos", 18)
-  Inventario ing_cafe("Cafe", 6)
-  Inventario ing_leche("Leche", 20)
-  Inventario ing_jugo("Jugo", 10)
-  Inventario ing_refresco("Refresco", 58)
-  Inventario ing_pay("Pay", 14)
-  Inventario ing_flan("Flan", 7)
-  Inventario ing_galletas("Galletas", 22)
+  Inventario inventario;
+  inventario.crear_comidas_ejem();
+  inventario.crear_postres_ejem();
+  inventario.crear_bebidas_ejem();
 
-  menu()
+  int opcion;
+  int opcion_6;
+  int ban=1;
+  int cantidad_f=0;
+ 	string nombre_f,temperatura_f;
+  float costo_f=0.0;
+  bool hielos_f;
+
+  while (ban==1){
+  //Impresion de menu
+  	menu();
+  //Permite al usuario ingresar una opción
+  	cin >> opcion;
+    opcion = validar_opcion(opcion);
+  	//Caso 1 que 
+    if (opcion==1){
+      inventario.mostrar_menu();
+    }  
+  	//Caso 2 que
+    else if (opcion==2){
+      inventario.mostrar_inventario();
+    }
+  	//Caso 3 que
+    else if (opcion==3){
+
+    } 
+    //Caso 4 que
+    else if (opcion==4){
+        
+    }  
+    //Caso 5 que
+    /**
+    else if (opcion==5){
+      cout<< "Dime el nombre del postre cuyo costo quieres editar: " ;
+  	  cin >> nombre_f;
+    	cout<< "Dime el nuevo costo que tendrá:  " ;
+  		cin >> costo_f;
+      cout<<inventario.editar_costo(nombre_f,costo_f);
+    }  
+    */
+    //Caso 6 que
+    else if (opcion==6){
+      cout << "\n¿Qué quieres añadir al inventario?\n";
+      cout << "1. Comida\n";
+      cout << "2. Postre\n";
+      cout << "3. Bebida\n";
+      cin >> opcion_6;
+      if (opcion_6==1){
+  				cout<< "Dime el nombre de la comida: " ;
+  				cin >> nombre_f;
+  				cout<< "Dime el costo que tendrá:  " ;
+  				cin >> costo_f;
+  				cout<< "¿Cuántas comidas de este tipo tienes disponibles?  " ;
+  				cin >> cantidad_f;        
+        inventario.agrega_comida(nombre_f,cantidad_f,costo_f);
+      }
+      else if (opcion_6==2){
+  			cout<< "Dime el nombre del postre: " ;
+  			cin >> nombre_f;
+  			cout<< "Dime el costo que tendrá:  " ;
+  			cin >> costo_f;
+				cout<< "¿Cuántos postres de este tipo vas a agregar?  " ; 	
+        cin >> cantidad_f; 
+        cout<< "¿Se sirve frío o caliente?  "; 	
+        cin >> temperatura_f ;
+        inventario.agrega_postre(nombre_f,cantidad_f,temperatura_f,costo_f);
+      }
+      else if (opcion_6==3){
+  			cout<< "Dime el nombre de la bebida: " ;
+  			cin >> nombre_f;
+  			cout<< "Dime el costo que tendrá:  " ;
+  			cin >> costo_f;
+				cout<< "¿Cuántas bebidas de este tipo vas a agregar? " ; 	
+        cin >> cantidad_f; 
+        cout<< "¿Llevará hielos? Contestar solo con `true´ ó `false´ "; 	
+        cin >> hielos_f;
+        inventario.agrega_bebida(nombre_f,cantidad_f,hielos_f,costo_f);
+      }
+    }  
+    //Caso 7 que
+    else if (opcion==7){
+      cout<<"Gracias por usar este programa";
+      ban=0;
+    }  
+  }
 }
