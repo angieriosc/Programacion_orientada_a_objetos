@@ -1,46 +1,71 @@
-#ifndef ALIMENTO_H_
+/*
+ * Clase Alimento, maneja grupos de productos, divididos en
+ * Comida, Postre, y Bebida
+ *
+ */
+
+#ifndef ALIMENTO_H_ //para evitar fallas al incluir archivos
 #define ALIMENTO_H_
 
-#include <sstream>
+#include <sstream> //para el uso de strngstream y aux 
 #include <string>
 using namespace std;
 
 class Alimento{
+//Declara las variables de instancia
 protected:
   int cantidad;
   string nombre;
 
 public: 
-  //Constuctor
+  //Constuctor inicial
   Alimento(){};
   Alimento(string name, int cant):cantidad(cant),nombre(name){};
 
   // Metodos miembros de la clase
   int get_cantidad();
   string get_nombre();
-
   void set_cantidad(int);
-  void set_nombre(string);
-
   string to_str();
-
-
 };
+//Getter de cantidad y nombre
 
+/**
+ * getter cantidad
+ *
+ * @param
+ * @return int: cantidad del alimento
+*/
 int Alimento:: get_cantidad(){
   return cantidad;
 }
-void Alimento:: set_cantidad(int cant){
-  cantidad=cant;
-}
-
+/**
+ * getter nombre
+ *
+ * @param
+ * @return string: nombre del alimento
+*/
 string Alimento:: get_nombre(){
   return nombre;
 }
-void Alimento:: set_nombre(string name){
-  nombre=name;
-}
+//Setter de cantidad 
 
+/**
+ * setter cantidad
+ *    otorga valor de cantidad para que no se acceda directamente
+ * @param int:cant
+ * @return 
+*/
+void Alimento:: set_cantidad(int cant){
+  cantidad=cant;
+}
+/**
+ * Funcion que almacena los valores de nombre y cantidad
+ * en una cadena.
+ *    
+ * @param 
+ * @return cadena convertida en string
+*/
 string Alimento::to_str(){
 
     stringstream aux;
@@ -48,18 +73,21 @@ string Alimento::to_str(){
     return aux.str();
 }
 
+// Clase hija
+
+//Declaro clase Comida que hereda de Alimento
 class Comida : public Alimento{
-  private:
+  //Declaro las variables de instancia
+  protected:
     float costo;
   
   public: 
-    Comida();
+    //Metodos que tendra el objeto
+    Comida(); //Constructores
     Comida(string nombre,int cantidad,float cost);
 
     float get_costo();
     void set_costo(float);
-    string to_str();
-
 };
 /**
  * Constructor por default
@@ -84,117 +112,115 @@ Comida::Comida(string name, int cant, float cost){
 
 }
 
+//Getter de costo
 
+/**
+ * getter costo
+ *
+ * @param
+ * @return float: costo de la comida
+*/
 float Comida:: get_costo(){
   return costo;
 }
 
+//Setter de costo
+
+/**
+ * setter costo
+ *    otorga valor de cantidad para que no se acceda directamente
+ * @param float:cost
+ * @return  
+*/
 void Comida:: set_costo(float cost){
   costo=cost;
  }
-
-string Comida::to_str(){
-
-    stringstream aux;
-    aux << "Nombre del producto: " << nombre << "\nCantidad:  "<< cantidad <<  " unidades\n";
-    return aux.str();
-}
-
-
-
 /**
- * Clase hija
+ * Funcion que almacena los valores de nombre y cantidad
+ * en una cadena.
+ *    
+ * @param 
+ * @return cadena convertida en string
 */
 
+// Clase hija
 
-
+//Declaro clase Postre que hereda de Alimento
 class Postre : public Alimento {
-protected:
-  string temperatura;
-  float costo;
+  //Variables de instancia
+  protected:
+    string temperatura;
+    float costo;
   
+  
+  public: 
+    //Declaro metodos
+    Postre(); //Constructor
+    Postre(string nombre,int cantidad,string temp,float cost);
 
-public: 
-  Postre();
-  Postre(string nombre,int cantidad,string temp,float cost);
+    float get_costo();
+    void set_costo(float);
 
-  string get_temperatura();
-  float get_costo();
-
-  void set_temperatura(string);
-  void set_costo(float);
-  string to_str();
 };
 /**
  * Constructor por default
+ *
+ * @param string name: nombre del postre, int cant: cantidad,
+ *        string: hielos float: costo,
+ * @return Objeto Postre
 */
 Postre::Postre(){
     nombre="";
     cantidad=0;
 }
 
-/**
- * Constructor que recibe nombre, cantidad, temperatura, y costo
- *
- * @param string name: nombre de la bebida, int cant: cantidad,
- *        string temp: temperatura,  float: costo,
- * @return Objeto Postre
-*/
+
 Postre::Postre(string name, int cant, string temp, float cost){
 
     nombre=name;
     cantidad=cant;
     temperatura=temp;
     costo=cost;
-
 }
+//Getter de costo
 
-
-string Postre:: get_temperatura(){
-  return temperatura;
-}
-void Postre:: set_temperatura(string temp){
-  temperatura=temp;
-}
-
+/**
+ * getter costo
+ *
+ * @param
+ * @return float: costo del postre
+*/
 float Postre:: get_costo(){
   return costo;
 }
+//Setter de costo
 
+/**
+ * setter costo
+ *    otorga valor de cantidad para que no se acceda directamente
+ * @param float:cost
+ * @return
+*/
 void Postre:: set_costo(float cost){
   costo=cost;
  }
 
-string Postre::to_str(){
+//Clase hija
 
-    stringstream aux;
-    aux << "Nombre del producto:  " << nombre << "\nCantidad:  "<< cantidad <<  " unidades\n";
-    return aux.str();
-}
-
-
-
-
-/**
- * Clase hija
-*/
-
-
+//Declaro clase Bebida que hereda de Alimento
 class Bebida : public Alimento {
-  private:
-    bool hielos;
+  //Variables de instancia
+  protected:
+    string hielos;
     float costo;
     
   public: 
-    Bebida();
-    Bebida(string nombre,int cantidad,bool hiel,float cost);
+    //Metodos 
+    Bebida(); //Constructor
+    Bebida(string nombre,int cantidad,string hiel,float cost);
 
-    bool get_hielos();
     float get_costo();
-
-    void set_hielos(bool);
     void set_costo(float);
-    string to_str();
 };
 /**
  * Constructor por default
@@ -205,13 +231,13 @@ Bebida::Bebida(){
 }
 
 /**
- * Constructor que recibe id, nombre, horas y salario
+ * Constructor que recibe nombre, cantidad y costo
  *
  * @param string name: nombre de la bebida, int cant: cantidad,
- *        bool: hielos float: costo,
+ *        string: hielos float: costo,
  * @return Objeto Bebida
 */
-Bebida::Bebida(string name, int cant, bool hiel, float cost){
+Bebida::Bebida(string name, int cant, string hiel, float cost){
 
     nombre=name;
     cantidad=cant;
@@ -220,28 +246,26 @@ Bebida::Bebida(string name, int cant, bool hiel, float cost){
 
 }
 
+//Getter de costo
 
-bool Bebida:: get_hielos(){
-  return hielos;
-}
-void Bebida:: set_hielos(bool hiel){
-  hielos=hiel;
-}
-
-
+/**
+ * getter costo
+ *
+ * @param
+ * @return float: costo de bebida
+*/
 float Bebida:: get_costo(){
   return costo;
 }
+//Setter de costo
 
+/**
+ * setter costo
+ *    otorga valor de cantidad para que no se acceda directamente
+ * @param float:cost
+ * @return 
+*/
 void Bebida:: set_costo(float cost){
   costo=cost;
  }
-
-string Bebida::to_str(){
-
-    stringstream aux;
-    aux << "Nombre del producto:  " << nombre << "\nCantidad:  "<< cantidad <<  " unidades\n";
-    return aux.str();
-}
-
-#endif
+#endif // ALIMENTO_H_
