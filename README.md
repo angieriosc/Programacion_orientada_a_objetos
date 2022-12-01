@@ -54,7 +54,7 @@ Para este programa se relizaron las siguientes correcciones:
     
 7.- Implemento clases apegadas a requerimientos a partir de un modelo.
     
-    Se observa en el archivo de "Inventario.h"
+    Se observar a lo largo de la archivo ya que sigo los mismos formatos de mi UML
 
 
 8.- Sigo estándares en todo mi código fuente: estilo, sangrías, comentarios, nombres, etc...
