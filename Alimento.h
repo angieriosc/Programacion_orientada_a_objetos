@@ -78,7 +78,7 @@ string Alimento::to_str(){
 //Declaro clase Comida que hereda de Alimento
 class Comida : public Alimento{
   //Declaro las variables de instancia
-  protected:
+  private:
     float costo;
   
   public: 
@@ -148,7 +148,7 @@ void Comida:: set_costo(float cost){
 //Declaro clase Postre que hereda de Alimento
 class Postre : public Alimento {
   //Variables de instancia
-  protected:
+  private:
     string temperatura;
     float costo;
   
@@ -210,7 +210,7 @@ void Postre:: set_costo(float cost){
 //Declaro clase Bebida que hereda de Alimento
 class Bebida : public Alimento {
   //Variables de instancia
-  protected:
+  private:
     string hielos;
     float costo;
     

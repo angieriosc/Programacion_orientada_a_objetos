@@ -60,12 +60,12 @@ int validar_opcion(int opcion){
  *        sea un número entre el 1 y el 3
  * @return opcion
 */  
-int validar_opcion_6(int opcion){
-  while (1>opcion||opcion>3){
+int validar_opcion_6(int opcion_6){
+  while (1>opcion_6||opcion_6>3){
     cout << "Ingresa respuesta valida: ";
-    cin >> opcion;
+    cin >> opcion_6;
   }
-  return opcion;  
+  return opcion_6;  
   
 }
 //Se crean objetos iniciales
@@ -155,7 +155,7 @@ int main(){
       cout << "2. Postre\n";
       cout << "3. Bebida\n";
       cin >> opcion_6;
-      validar_opcion_6(opcion_6);
+      opcion_6=validar_opcion_6(opcion_6);
       if (opcion_6==1){
   				cout<<"Dime el nombre de la comida: " ;
   				cin >>nombre_f;

@@ -17,20 +17,21 @@ class Inventario{
     Comida comidas[MAX];
     Bebida bebidas[MAX];
     Cuenta cuentas[MAX];
-    //Declaro las variables de instancia
     double alimentos_costo[MAX];
     string alimentos_nombre[MAX];
+    //Declaro las variables de instancia
+    private:
     int ipostres, icomidas, ibebidas, icuentas;
     int ialimentos_c, num2;
-    float acum_t,acum_b,acum_p,acum_c;  
-    float nuevo_costo;
+    float acum_t,nuevo_costo;  
+
     
   public: 
     //Métodos
     Inventario();//Constructor
-  
-    void mostrar_menu();
+
     void mostrar_inventario();
+    void mostrar_menu();
     void agrega_comida(string, int, float);
     void agrega_postre(string, int, string, float); 
     void agrega_bebida(string, int, string, float);
@@ -40,10 +41,10 @@ class Inventario{
     void crear_comidas_ejem();
     void crear_cuentas_ejem();
     void editar_costo(string, float);
-    void consultar_lista_c(int num_m,int num);
-    void consultar_lista_p(int num_m,int num);
-    void consultar_lista_b(int num_m,int num);
-    void calcular_cuenta(int num_m);
+    void consultar_lista_c(int,int);
+    void consultar_lista_p(int,int);
+    void consultar_lista_b(int,int);
+    void calcular_cuenta(int);
 
 };
 /**
