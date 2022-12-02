@@ -48,7 +48,7 @@ Para este programa se relizaron las siguientes correcciones:
 
 6.- Implemento composición (o agregación) sieguiendo mi diagrama de clases.
     
-    Se puede observar en el archivo "Inventario.h" donde se realiza agregación con las clases hija de Postre, Bebida, Comida y Cuenta, 
+    Se puede observar en el archivo "Inventario.h" donde se realiza composición con las clases hija de Postre, Bebida, Comida y Cuenta, 
     (líneas 166 a 192) en las funciones de agregar alimentos, y 201 a 260 en las funciones de crear ejemplos.
     
     
